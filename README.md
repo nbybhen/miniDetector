@@ -1,2 +1,2 @@
 # miniDetector
-downDetector but scaled down to terminal
+downDetector but scaled down to terminal. so kawaiiii, right??
