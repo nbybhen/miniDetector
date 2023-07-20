@@ -8,10 +8,6 @@ struct File{
 
     explicit File(std::string name);
 
-    ~File(){
-        // TODO: Create Deconstructor
-    }
-
     bool checkFileExists();
 
     bool inFile(std::string& needle);
@@ -21,8 +17,5 @@ struct File{
     void clearFile();
 
     void readFile();
-
-
-
 
 };

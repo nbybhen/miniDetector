@@ -5,21 +5,17 @@
 #include "File.h"
 #include <iostream>
 #include <utility>
-#include <vector>
 
-
-File::File(std::string name) {
-    this->name = std::move(name);
-}
+File::File(std::string fileName) : name(std::move(fileName)) {}
 
 bool File::checkFileExists(){
-    this->file.open("saved.txt");
-    if(!this->file) {
+    file.open("saved.txt");
+    if(!file) {
         std::cout << "File could not be created\n";
         return false;
     }
     else{
-        this->file.close();
+        file.close();
         return true;
     }
 
@@ -33,13 +29,13 @@ void File::readFile(){
 #endif
     std::string input;
 
-    this->file.open("saved.txt", std::ios::in);
+    file.open("saved.txt", std::ios::in);
     std::string line;
     std::cout << "Saved File: \n";
-    while (getline(this->file, line)) {
+    while (getline(file, line)) {
         std::cout << line << "\n";
     }
-    this->file.close();
+    file.close();
     std::cout << "Enter \'q\' to exit. ::\n";
     while(input != "q") {
         std::cin >> input;
@@ -104,7 +100,7 @@ void File::clearFile(){
     std::system("clear");
 #endif
     if(checkFileExists()){
-        this->file.open("saved.txt", std::ios::out | std::ios::trunc);
+        file.open("saved.txt", std::ios::out | std::ios::trunc);
         file.close();
     }
 }
