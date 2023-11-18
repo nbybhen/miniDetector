@@ -106,9 +106,12 @@ void start(File& file){
         std::cout << "5 -> Clear Saved ::\n";
         std::cout << "q -> Exit ::\n";
         std::cin >> choice;
+
         switch(choice){
             case '1':
+                std::cout << "Takes desired choice: \n";
                 file.addPages();
+
                 clear();
                 break;
 

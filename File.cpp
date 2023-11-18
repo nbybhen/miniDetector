@@ -9,7 +9,7 @@
 File::File(std::string fileName) : name(std::move(fileName)) {}
 
 bool File::checkFileExists(){
-    file.open("saved.txt");
+    file.open("saved.txt", std::ios::in);
     if(!file) {
         std::cout << "File could not be created\n";
         return false;
@@ -73,8 +73,8 @@ void File::addPages(){
     std::string input;
 
     if (checkFileExists()) {
+        std::cout << "Input connection to save ::\n";
         while (input != "q") {
-            std::cout << "Input connection to save ::\n";
             std::cin >> input;
 
             if (input == "q") {
@@ -87,7 +87,7 @@ void File::addPages(){
                 std::cout << "Connection added! ::\n\n";
                 file.close();
             }
-
+            std::cout << "Enter another connection or enter 'q' to exit. ::\n";
         }
     }
 
@@ -99,7 +99,11 @@ void File::clearFile(){
 #elif __APPLE__
     std::system("clear");
 #endif
-    if(checkFileExists()){
+    char inp;
+    std::cout << "Are you sure you want to CLEAR your saved URL's? (Y/n) :: \n";
+    std::cin >> inp;
+
+    if(checkFileExists() && std::tolower(inp) == 'y'){
         file.open("saved.txt", std::ios::out | std::ios::trunc);
         file.close();
     }
